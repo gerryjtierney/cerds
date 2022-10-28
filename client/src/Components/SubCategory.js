@@ -1,6 +1,6 @@
 import React from 'react';
 import TaskCard from "./TaskCard";
-
+import { Droppable } from "react-beautiful-dnd";
 
 
 
@@ -13,13 +13,23 @@ function SubCategory(props) {
     console.log(name, " relevantCards:", relevantCards)
 
     return (
+    <>
+        <p>{name}</p>
+        <Droppable droppableId={`${name} + 2`} >
+            {(provided) => (
 
-        <div className="col text-bg-light border h-100">
-            <p>{name}</p>
-            {relevantCards.map((relevantCard) =>
-                <TaskCard key={relevantCard.id} name={relevantCard.name} description={relevantCard.description}/>
-            )}
-        </div>
+            <div ref={provided.innerRef} {...provided.droppableProps} className="col text-bg-light border h-100">
+
+                {relevantCards.map((relevantCard) =>
+                    <TaskCard key={relevantCard.id} name={relevantCard.name} description={relevantCard.description}/>
+                )}
+            </div>
+
+                )}
+        </Droppable>
+    </>
+
+
     );
 }
 
