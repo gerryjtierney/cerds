@@ -14,19 +14,20 @@ function SubCategory(props) {
 
     return (
     <>
-        <p>{name}</p>
-        <Droppable droppableId={`${name} + 2`} >
-            {(provided) => (
+        <div className="col text-bg-light border h-100">{name}
+            <Droppable droppableId={`${name} + 2`} >
+                {(provided) => (
 
-            <div ref={provided.innerRef} {...provided.droppableProps} className="col text-bg-light border h-100">
+                <div ref={provided.innerRef} {...provided.droppableProps} className="h-100">
 
-                {relevantCards.map((relevantCard) =>
-                    <TaskCard key={relevantCard.id} name={relevantCard.name} description={relevantCard.description}/>
-                )}
-            </div>
+                    {relevantCards.map((relevantCard) =>
+                        <TaskCard key={relevantCard.id} name={relevantCard.name} description={relevantCard.description}/>
+                    )}
+                </div>
 
-                )}
-        </Droppable>
+                    )}
+            </Droppable>
+        </div>
     </>
 
 
