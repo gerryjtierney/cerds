@@ -4,13 +4,11 @@ import { Droppable } from "react-beautiful-dnd";
 
 
 
-function SubCategory(props) {
+function SubCategory({name, cards}) {
 
-    const { name, cards } = props;
-    console.log(cards)
 
     const relevantCards = cards.filter(card => card.currentCategory === name)
-    console.log(name, " relevantCards:", relevantCards)
+
 
     return (
     <>
@@ -21,7 +19,12 @@ function SubCategory(props) {
                 <div ref={provided.innerRef} {...provided.droppableProps} className="h-100">
 
                     {relevantCards.map((relevantCard) =>
-                        <TaskCard key={relevantCard.id} name={relevantCard.name} description={relevantCard.description}/>
+                        <TaskCard
+                            key={relevantCard.id}
+                            name={relevantCard.name}
+                            description={relevantCard.description}
+                            id={relevantCard.id}
+                        />
                     )}
                 </div>
 

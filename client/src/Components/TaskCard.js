@@ -1,12 +1,11 @@
 import React from 'react';
 import { Draggable } from "react-beautiful-dnd";
 
-function TaskCard(props) {
+function TaskCard({name, description, id}) {
 
-    const {name, description} = props
 
     return (
-        <Draggable key={name} draggableId={name} index={name}>
+        <Draggable key={name} draggableId={id} index={name}>
             {(provided) => (
             <div className="card" ref={provided.innerRef}{...provided.draggableProps}{...provided.dragHandleProps}>
                 <div className="card-header bg-success h-25">
